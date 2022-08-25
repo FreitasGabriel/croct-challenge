@@ -4,6 +4,12 @@ import { COLORS } from '../../constants/colors';
 
 export const ErrorWrapper = styled.div`
 
+    display: flex;
+    align-content: stretch;
+    justify-content: space-between;
+
+    width: 34rem;
+
 
     .info-wrapper{
         display: flex;
@@ -11,7 +17,7 @@ export const ErrorWrapper = styled.div`
         justify-content: center;
 
         position: relative;
-        left: 1rem;
+        left: 2rem;
         
     }
 
@@ -39,6 +45,8 @@ export const ErrorInfo = styled.div`
     align-items: left;
 
     margin-left: 20px;
+
+
     
     .message-info{
         font-family: 'Inter', sans-serif;
@@ -56,6 +64,26 @@ export const ErrorInfo = styled.div`
         color: ${COLORS.grayText};
 
         text-decoration: underline;
+
+        cursor: pointer;
+
+        width: 4.5rem;
     }
 
+`
+
+export const CloseIconWrapper = styled.button`
+
+    position: relative;
+    right: 1.5rem;
+    top: 0;
+
+    height: 10px;
+
+    background: none;
+	color: inherit;
+	border: none;
+	outline: inherit;
+    
+	cursor: pointer;
 `
