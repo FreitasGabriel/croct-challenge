@@ -13,8 +13,15 @@ interface CropTemplate {
 }
 
 export const CropTemplate = ({ onClick }: CropTemplate) => {
-   const { setCanvaAvatar, setTemplate, avatarScale, setAvatarScale, setLoadFileIsEnabled, avatar } =
-      useContext(AvatarContext);
+   const {
+      setCanvaAvatar,
+      setTemplate,
+      avatarScale,
+      setAvatarScale,
+      setLoadFileIsEnabled,
+      avatar,
+   } = useContext(AvatarContext);
+
    const editorRef = useRef(null);
 
    const saveImg = () => {
@@ -28,7 +35,7 @@ export const CropTemplate = ({ onClick }: CropTemplate) => {
    };
 
    return (
-      <CropWrapper>
+      <CropWrapper data-testid="crop-wrapper__test">
          <ReactAvatar
             ref={editorRef}
             image={avatar}

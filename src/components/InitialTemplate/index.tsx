@@ -9,7 +9,7 @@ export const InitialTemplate = () => {
    const { canvaAvatar } = useContext(AvatarContext);
 
    return (
-      <InitialTemplateWrapper avatar={canvaAvatar}>
+      <InitialTemplateWrapper avatar={canvaAvatar} data-testid="initial-wrapper__test">
          {canvaAvatar && (
             <CroppedPhotoWrapper>
                <img src={canvaAvatar} alt="avatar" />

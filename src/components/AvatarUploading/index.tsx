@@ -9,8 +9,14 @@ import { CropTemplate } from '../CropTemplate';
 import { AvatarUploadingWrapper } from './styles';
 
 export const AvatarUploading = () => {
-   const { template, setTemplate, loadFileIsEnabled, setLoadFileIsEnabled, setCanvaAvatar, uploadAvatar } =
-      useContext(AvatarContext);
+   const {
+      template,
+      setTemplate,
+      loadFileIsEnabled,
+      setLoadFileIsEnabled,
+      setCanvaAvatar,
+      uploadAvatar,
+   } = useContext(AvatarContext);
 
    const { acceptedFiles, fileRejections, getRootProps, getInputProps } = useDropzone({
       maxFiles: 1,
@@ -53,7 +59,11 @@ export const AvatarUploading = () => {
    }, [acceptedFiles, fileRejections]);
 
    return (
-      <AvatarUploadingWrapper {...getRootProps()} template={template}>
+      <AvatarUploadingWrapper
+         {...getRootProps()}
+         template={template}
+         data-testid="avatar-uploading__test"
+      >
          <input {...getInputProps()} />
          {handleTemplate()}
       </AvatarUploadingWrapper>
