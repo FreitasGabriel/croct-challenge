@@ -12,12 +12,6 @@ export const AvatarUploading = () => {
    const { template, setTemplate, loadFileIsEnabled, setLoadFileIsEnabled, setCanvaAvatar, uploadAvatar } =
       useContext(AvatarContext);
 
-   const closeCropped = () => {
-      setTemplate('initial');
-      setLoadFileIsEnabled(true);
-      setCanvaAvatar('');
-   };
-
    const { acceptedFiles, fileRejections, getRootProps, getInputProps } = useDropzone({
       maxFiles: 1,
       accept: {
@@ -27,6 +21,12 @@ export const AvatarUploading = () => {
       noDrag: !loadFileIsEnabled,
    });
 
+   const closeCropped = () => {
+      setTemplate('initial');
+      setLoadFileIsEnabled(true);
+      setCanvaAvatar('');
+   };
+
    const handleTemplate = () => {
       switch (template) {
          case 'initial':
@@ -35,8 +35,6 @@ export const AvatarUploading = () => {
             return <CropTemplate onClick={() => closeCropped()} />;
          case 'error':
             return <ErrorTemplate onClick={() => closeCropped()} />;
-         case 'cropped':
-            return <h1>TESTE</h1>;
          default:
             return <InitialTemplate />;
       }

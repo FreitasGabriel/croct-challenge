@@ -9,8 +9,8 @@ interface AvatarContextData {
    uploadAvatar: (file: File | string) => void;
    canvaAvatar: string;
    setCanvaAvatar: (value: string) => void;
-   template: 'initial' | 'error' | 'cropping' | 'cropped';
-   setTemplate: (tmp: 'initial' | 'error' | 'cropping' | 'cropped') => void;
+   template: 'initial' | 'error' | 'cropping';
+   setTemplate: (tmp: 'initial' | 'error' | 'cropping') => void;
    avatarScale: number;
    setAvatarScale: (sacel: number) => void;
    loadFileIsEnabled: boolean;
