@@ -23,7 +23,7 @@ export const AvatarProvider = ({ children }: AvatarProviderProps) => {
    const [avatar, setAvatar] = useState<File | string>({} as File);
    const [canvaAvatar, setCanvaAvatar] = useState<string>('');
    const [avatarScale, setAvatarScale] = useState<number>(1);
-   const [template, setTemplate] = useState<'initial' | 'error' | 'cropping' | 'cropped'>('initial');
+   const [template, setTemplate] = useState<'initial' | 'error' | 'cropping'>('initial');
    const [loadFileIsEnabled, setLoadFileIsEnabled] = useState<boolean>(true);
 
    const uploadAvatar = (file: File | string) => {

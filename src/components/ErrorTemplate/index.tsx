@@ -24,7 +24,7 @@ export const ErrorTemplate = ({ onClick }: ErrorTemplateProps) => {
    }, [acceptedFiles]);
 
    return (
-      <ErrorWrapper>
+      <ErrorWrapper data-testeid="error-wrapper__test">
          <div className="info-wrapper">
             <PhotoError>
                <ErrorIcon />
