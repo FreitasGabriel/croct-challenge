@@ -5,5 +5,7 @@ export const COLORS = {
     graySecondary: '#677489',
     grayTerciary: '#495567',
     grayText: '#3D485F',
-    redPrimary: '#C64D32'
+    redPrimary: '#C64D32',
+    bluePrimary: '#B9D1FF',
+    blueSecondary: '#3F80FF',
 }
