@@ -1,17 +1,17 @@
-import { useState } from "react";
+import { AvatarProvider } from './context/AvatarContext';
 
-import { AvatarUploading } from "./components/AvatarUploading";
+import { AvatarUploading } from './components/AvatarUploading';
 
-import { AppWrapper } from "./styles";
+import { AppWrapper } from './styles';
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return (
-    <AppWrapper>
-      <AvatarUploading />
-    </AppWrapper>
-  );
+   return (
+      <AvatarProvider>
+         <AppWrapper>
+            <AvatarUploading />
+         </AppWrapper>
+      </AvatarProvider>
+   );
 }
 
 export default App;
