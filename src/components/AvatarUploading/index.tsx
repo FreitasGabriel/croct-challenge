@@ -1,32 +1,63 @@
-import {useDropzone} from 'react-dropzone'
+import { useEffect, useState, useContext } from 'react';
+import { useDropzone } from 'react-dropzone';
+import { AvatarContext } from '../../context/AvatarContext';
+
+import { ErrorTemplate } from '../ErrorTemplate';
+import { InitialTemplate } from '../InitialTemplate';
+import { CropTemplate } from '../CropTemplate';
+
 import { AvatarUploadingWrapper } from './styles';
 
-import {ErrorTemplate} from '../ErrorTemplate'
-
-import {DropzoneIcon} from '../Icons/DropZoneIcon';
-import { useEffect } from 'react';
-
 export const AvatarUploading = () => {
+   const { template, setTemplate, loadFileIsEnabled, setLoadFileIsEnabled, setCanvaAvatar, uploadAvatar } =
+      useContext(AvatarContext);
 
+   const closeCropped = () => {
+      setTemplate('initial');
+      setLoadFileIsEnabled(true);
+      setCanvaAvatar('');
+   };
 
-  const {acceptedFiles, getRootProps, getInputProps, isDragAccept, isDragReject} = useDropzone()
+   const { acceptedFiles, fileRejections, getRootProps, getInputProps } = useDropzone({
+      maxFiles: 1,
+      accept: {
+         'image/png': ['.png', '.jpeg', '.jpg'],
+      },
+      noClick: !loadFileIsEnabled,
+      noDrag: !loadFileIsEnabled,
+   });
 
-  useEffect(() => {
-    console.log(acceptedFiles, isDragAccept, isDragReject)
-  }, [acceptedFiles])
+   const handleTemplate = () => {
+      switch (template) {
+         case 'initial':
+            return <InitialTemplate />;
+         case 'cropping':
+            return <CropTemplate onClick={() => closeCropped()} />;
+         case 'error':
+            return <ErrorTemplate onClick={() => closeCropped()} />;
+         case 'cropped':
+            return <h1>TESTE</h1>;
+         default:
+            return <InitialTemplate />;
+      }
+   };
 
-  return (
-    <AvatarUploadingWrapper {...getRootProps()} hasFile={acceptedFiles.length > 0}>
-      <input {...getInputProps()} />
-        {/* <div className='section-wrapper'>
-          <div className='icon-wrapper'>
-            <DropzoneIcon />
-            <p>Organization Logo</p>
-          </div>
-          <p className='drop-message'>Drop the image here or click to browse.</p>
-        </div> */}
+   useEffect(() => {
+      if (fileRejections.length > 0) {
+         setLoadFileIsEnabled(false);
+         setTemplate('error');
+      }
+      if (acceptedFiles.length > 0) {
+         setLoadFileIsEnabled(false);
+         setTemplate('cropping');
+         uploadAvatar(acceptedFiles[0]);
+      }
+   }, [acceptedFiles, fileRejections]);
 
-        <ErrorTemplate onClick={() => console.log('teste')}/>
-    </AvatarUploadingWrapper>
-  );
+   return (
+      <AvatarUploadingWrapper {...getRootProps()} template={template}>
+         <input {...getInputProps()} />
+         {handleTemplate()}
+      </AvatarUploadingWrapper>
+   );
 };
