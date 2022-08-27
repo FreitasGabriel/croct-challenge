@@ -45,7 +45,7 @@ export const CroppedPhotoWrapper = styled.div`
    display: flex;
 
    position: relative;
-   left: -2rem;
+   left: -3rem;
 
    img{
       width: 140px;
