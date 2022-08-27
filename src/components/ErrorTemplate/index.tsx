@@ -31,12 +31,17 @@ export const ErrorTemplate = ({ onClick }: ErrorTemplateProps) => {
             </PhotoError>
             <ErrorInfo {...getRootProps()}>
                <p className="message-info">Sorry, the upload failed</p>
-               <a {...getInputProps} className="message-action" onClick={() => chooseImg}>
+               <a
+                  data-testid="choose-img__test"
+                  {...getInputProps}
+                  className="message-action"
+                  onClick={() => chooseImg}
+               >
                   Try again
                </a>
             </ErrorInfo>
          </div>
-         <CloseIconWrapper onClick={onClick}>
+         <CloseIconWrapper data-testid="close-icon__test" onClick={onClick}>
             <CloseIcon />
          </CloseIconWrapper>
       </ErrorWrapper>

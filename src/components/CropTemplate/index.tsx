@@ -62,7 +62,7 @@ export const CropTemplate = ({ onClick }: CropTemplate) => {
             </button>
          </SliderWrapper>
 
-         <CloseIconWrapper onClick={onClick}>
+         <CloseIconWrapper data-testid="close-icon__test" onClick={onClick}>
             <CloseIcon />
          </CloseIconWrapper>
       </CropWrapper>

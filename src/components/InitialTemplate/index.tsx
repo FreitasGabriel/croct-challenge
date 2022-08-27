@@ -11,7 +11,7 @@ export const InitialTemplate = () => {
    return (
       <InitialTemplateWrapper avatar={canvaAvatar} data-testid="initial-wrapper__test">
          {canvaAvatar && (
-            <CroppedPhotoWrapper>
+            <CroppedPhotoWrapper data-testid="cropped-photo__test">
                <img src={canvaAvatar} alt="avatar" />
             </CroppedPhotoWrapper>
          )}
