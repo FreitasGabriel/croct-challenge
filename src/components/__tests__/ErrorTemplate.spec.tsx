@@ -5,11 +5,11 @@ import '@testing-library/jest-dom';
 
 import { ErrorTemplate } from '../ErrorTemplate';
 
-describe('should be able render error template', () => {
+describe('Error Template', () => {
    const onClick = jest.fn();
    const uploadImg = jest.fn();
 
-   it('Renders correctly', () => {
+   it('should be able render error template correctly', () => {
       act(() => {
          render(<ErrorTemplate onClick={onClick} />);
       });
@@ -17,10 +17,10 @@ describe('should be able render error template', () => {
       expect(screen.getByTestId('error-wrapper__test')).not.toBeNull();
    });
 
-   it('should be choose another image', async () => {
+   it('should be able choose another image', async () => {
       const user = userEvent.setup();
 
-      const {} = render(<ErrorTemplate onClick={onClick} />);
+      render(<ErrorTemplate onClick={onClick} />);
 
       const uploadImageButton = screen.getByTestId('choose-img__test');
 
